@@ -65,7 +65,8 @@
 			num++;
 		})
 		
-		element.append('<div id="mi-spark"><img src="img/spark.gif"></div>')
+		//element.append('<div id="mi-spark"><img src="img/spark.gif"></div>');
+		element.append('<div id="mi-spark"></div>')
 		spark = $('#mi-spark');
 		
 		element.append('<div id="mi-spark-line"></div>')
@@ -102,8 +103,14 @@
 		
 		var currentPage = 1;
 		function sparkAnimation(page){
+			var left = screenSize * page
+			if(page == pageNum){
+				left -= sparkSize;
+			}else{
+				left = screenSize * page;
+			}
 			spark.animate({
-				left : screenSize * page + 'px'
+				left :  left + 'px'
 			},sparkSpeed,'linear', function(){
 				pageAnimation(page);
 			})
